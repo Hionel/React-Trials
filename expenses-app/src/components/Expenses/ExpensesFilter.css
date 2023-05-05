@@ -1,0 +1,16 @@
+.filter__container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 1rem 0.1rem;
+}
+
+.filter__header {
+	color: white;
+}
+.filter__options {
+	padding: 0.5rem 1rem;
+	border-radius: 5px;
+	font-size: 1rem;
+	font-weight: 700;
+}
