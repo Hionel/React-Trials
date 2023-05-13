@@ -1,0 +1,17 @@
+.mainContainer {
+	height: 100vh;
+	background-color: rgb(10, 10, 10, 0.9);
+	position: relative;
+}
+
+.formContainer {
+	height: 35%;
+}
+
+.listContainer {
+	height: 65%;
+	justify-content: flex-start;
+}
+.modalContainer {
+	height: 100%;
+}

@@ -1,0 +1,7 @@
+.cardContainer {
+	background-color: var(--card-background);
+	box-shadow: var(--card-box-shadow);
+	padding: 1rem;
+	width: 50%;
+	border-radius: 5px;
+}
