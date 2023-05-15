@@ -1,12 +1,12 @@
-import React from "react";
+import React, { Fragment } from "react";
 import modalStyle from "./ErrorModal.module.css";
+import ReactDOM from "react-dom";
 
 interface IModalProps {
 	errorDescription: string | undefined;
 	openModal: (state: boolean, msg?: string) => void;
 }
-
-const ErrorModal = (props: IModalProps) => {
+const ErrorContent = (props: IModalProps) => {
 	const { errorDescription, openModal } = props;
 	const closeError = (event: React.MouseEvent) => {
 		const target = event.target as HTMLElement;
@@ -28,6 +28,19 @@ const ErrorModal = (props: IModalProps) => {
 				</button>
 			</div>
 		</section>
+	);
+};
+const ErrorModal = (props: IModalProps) => {
+	return (
+		<Fragment>
+			{ReactDOM.createPortal(
+				<ErrorContent
+					errorDescription={props.errorDescription}
+					openModal={props.openModal}
+				/>,
+				document.getElementById("portal-root")!
+			)}
+		</Fragment>
 	);
 };
 
