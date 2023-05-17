@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FormEvent, useState } from "react";
+import React, { FormEvent, useRef } from "react";
 import Card from "../UI/Card/Card";
 import Button from "../UI/Button/Button";
 import formStyle from "./UserForm.module.css";
@@ -9,28 +9,23 @@ interface IFormProps {
 }
 
 const UserForm = (props: IFormProps) => {
-	const [inputUsername, setInputUsername] = useState("");
-	const [inputAge, setInputAge] = useState("");
+	const usernameInputRef = useRef<HTMLInputElement>(null);
+	const ageInputRef = useRef<HTMLInputElement>(null);
 	const submitButton = {
 		type: "submit" as "submit",
 		text: "Add User" as string,
 	};
-	const usernameInputHandler = (event: ChangeEvent<HTMLInputElement>) => {
-		setInputUsername(event.target.value);
-	};
-	const ageInputHandler = (event: ChangeEvent<HTMLInputElement>) => {
-		setInputAge(event.target.value);
-	};
+
 	const submitUserFormHandler = (event: FormEvent) => {
 		event.preventDefault();
+
 		const userObject: IUser = {
 			id: Math.random() * 1000,
-			username: inputUsername,
-			age: Number(inputAge),
+			username: usernameInputRef.current?.value!,
+			age: Number(ageInputRef.current?.value),
 		};
-		setInputUsername("");
-		setInputAge("");
-
+		usernameInputRef.current!.value = "";
+		ageInputRef.current!.value = "";
 		return props.formSubmission(userObject);
 	};
 	return (
@@ -44,8 +39,7 @@ const UserForm = (props: IFormProps) => {
 					<input
 						type="text"
 						placeholder="Insert the username"
-						value={inputUsername}
-						onChange={usernameInputHandler}
+						ref={usernameInputRef}
 					/>
 				</div>
 				<div className={`${formStyle.inputContainer} flexColumn`}>
@@ -53,8 +47,7 @@ const UserForm = (props: IFormProps) => {
 					<input
 						type="number"
 						placeholder="Insert user's age"
-						value={inputAge}
-						onChange={ageInputHandler}
+						ref={ageInputRef}
 					/>
 				</div>
 				<div className={`${formStyle.inputContainer}`}>
