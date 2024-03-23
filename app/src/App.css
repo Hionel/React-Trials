@@ -1,0 +1,54 @@
+body,
+#root {
+	height: 100vh;
+	width: 100vw;
+	color: var(--font-color);
+}
+
+/* Utils */
+:root {
+	--font-color: #003049;
+	--background-color: #003049;
+	--accent-bg-color: #eae2b7;
+	--secondary-color: #fcbf49;
+	--error-color: #d62828;
+	--success-color: #248232;
+	--card-radius: 10px;
+	--box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+		rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+
+.flexCentered {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.form__wrapper {
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.form {
+	flex-direction: column;
+	/* background-color: red; */
+	height: 100%;
+	width: 100%;
+	padding: 1rem;
+	gap: 1rem;
+}
+
+.container {
+	height: 100%;
+	width: 100%;
+	background-color: var(--background-color);
+}
+
+.card {
+	padding: 1.5rem;
+	height: fit-content;
+	min-width: fit-content;
+	border-radius: var(--card-radius);
+	box-shadow: var(--box-shadow);
+	background-color: var(--accent-bg-color);
+}
